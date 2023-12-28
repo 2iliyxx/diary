@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Diary</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="text-light m-5">
+    <div class="container">
+      <div class="form-control bg-dark">
+        <textarea id="input" class="form-control"></textarea>
+        <button type="button" class="btn btn-primary" id="create">
+          Create note
+        </button>
+      </div>
+      <div class="search-container">
+        <div class="input-label">Enter keywords or date to search notes:</div>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search..."
+          title="Enter keywords or date to search notes"
+        />
+        <button type="button" class="btn btn-secondary" id="searchButton">
+          Search
+        </button>
+      </div>
+      <button type="button" class="btn btn-secondary" id="filterByDate">
+        Filter by Date
+      </button>
+      <ul class="list-group list-group-flush" id="diary"></ul>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

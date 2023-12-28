@@ -1,0 +1,10 @@
+1. Editing notes(text and dates)
+2. optimize search(tolowercase)
+3. add by enter
+4. date edition validation
+5. Notes delete
+-------First update-------
+- Note creation remake
+    - Delete input and save buttons
+    -leave the create button which refer to new page(create.html)
+    
