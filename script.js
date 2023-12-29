@@ -4,16 +4,39 @@ const list = document.querySelector("#diary");
 const filterBtn = document.querySelector("#filterByDate");
 const searchInput = document.querySelector("#searchInput");
 const searchBtn = document.querySelector("#searchButton");
+const tagsGroup = document.querySelector(".tags");
 let notes = [];
 let visibleNotes = notes;
 let mode = 1;
 
 createButton.addEventListener("click", () => {
   if (input.value !== "") {
+    var personalTag = tagsGroup.querySelector("#btn-check");
+    var workTag = tagsGroup.querySelector("#btn-check-2");
+    var studyingTag = tagsGroup.querySelector("#btn-check-3");
+    var travelingTag = tagsGroup.querySelector("#btn-check-4");
+    var funTag = tagsGroup.querySelector("#btn-check-5");
     const date = new Date();
     const localDate =
       date.toLocaleDateString() + " " + date.toLocaleTimeString();
-    notes.push({ note: input.value, date: localDate });
+    noteObject = {
+      note: input.value,
+      date: localDate,
+      tags: {
+        personal: personalTag.checked,
+        work: workTag.checked,
+        studying: studyingTag.checked,
+        traveling: travelingTag.checked,
+        fun: funTag.checked,
+      },
+    };
+    notes.push(noteObject);
+    personalTag.checked =
+      workTag.checked =
+      studyingTag.checked =
+      travelingTag.checked =
+      funTag.checked =
+        false;
     input.value = "";
     render(notes);
   } else {
@@ -73,6 +96,7 @@ searchBtn.addEventListener("click", function () {
     visibleNotes = filteredNotes;
     render(filteredNotes);
   } else {
+    visibleNotes = notes;
     render(notes);
   }
 });
@@ -81,10 +105,7 @@ function render(arr) {
   list.innerHTML = "";
   for (let i = 0; i < arr.length; i++) {
     const { note, date } = arr[i];
-    list.insertAdjacentHTML(
-      "beforeend",
-      getHtml(note, date, i, arr[i].isEditable)
-    );
+    list.insertAdjacentHTML("beforeend", getHtml(note, date, i));
   }
 }
 
@@ -92,7 +113,7 @@ function render(arr) {
 list.addEventListener("click", function (event) {
   const listItem = event.target.closest(".list-group-item");
   if (!listItem) return;
-  const index = listItem.dataset.indexl;
+  const index = listItem.dataset.index;
   const editButton = listItem.querySelector(".edit-btn");
   const saveButton = listItem.querySelector(".save-btn");
   const deleteButton = listItem.querySelector(".delete-btn");

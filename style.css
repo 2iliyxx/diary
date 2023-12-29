@@ -9,6 +9,7 @@ body {
   overflow-wrap: break-word; /* Перенос слов, чтобы текст влезал в блок */
   word-wrap: break-word; /* Поддержка для старых браузеров */
   max-width: 100%; /* Ширина блока не больше 100% контейнера */
+  color: black;
 }
 .note-date {
   display: block;
@@ -57,4 +58,12 @@ body {
 .edit-btn,
 .save-btn {
   margin-right: 5px;
+}
+
+.tags {
+  padding-top: 5px;
+}
+
+#chooseTags {
+  color: white;
 }
