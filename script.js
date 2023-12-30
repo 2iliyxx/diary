@@ -44,10 +44,11 @@ createButton.addEventListener("click", () => {
   }
 });
 
-function getHtml(note, noteDate, index) {
+function getHtml(note, noteDate, index, tags) {
   return `<li class="list-group-item" data-date="${noteDate}" data-index=${index}>
   <span class="note-date">${noteDate}</span>
   <span class='note-text'>${note}</span>
+  <span class='note-tags'><img src="label.png" alt="tags: " height='20'> ${tags}</span>
   <div class="note-actions">
           <button class="btn btn-info edit-btn" data-type='edit'  data-index=${index}'>Edit</button>
           <button class="btn btn-success save-btn" data-type='save'  data-index=${index} disabled>Save</button>
@@ -104,8 +105,12 @@ searchBtn.addEventListener("click", function () {
 function render(arr) {
   list.innerHTML = "";
   for (let i = 0; i < arr.length; i++) {
-    const { note, date } = arr[i];
-    list.insertAdjacentHTML("beforeend", getHtml(note, date, i));
+    const { note, date, tags } = arr[i];
+    const keys = Object.keys(tags);
+    const activeKeys = keys.filter((el) => {
+      return tags[el] == true;
+    });
+    list.insertAdjacentHTML("beforeend", getHtml(note, date, i, activeKeys));
   }
 }
 

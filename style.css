@@ -67,3 +67,9 @@ body {
 #chooseTags {
   color: white;
 }
+
+.note-tags {
+  display: block;
+  font-size: 0.9em;
+  opacity: 50%;
+}
