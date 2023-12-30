@@ -143,8 +143,10 @@ list.addEventListener("click", function (event) {
     notes[noteIndex].note = noteText.textContent;
     notes[noteIndex].date = noteDate.textContent;
   } else if (event.target == deleteButton) {
-    notes.splice(index, 1);
-    render(notes);
+    if (confirm("Are you sure?")) {
+      notes.splice(index, 1);
+      render(notes);
+    }
   }
 });
 
