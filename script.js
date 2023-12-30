@@ -107,10 +107,9 @@ function render(arr) {
   for (let i = 0; i < arr.length; i++) {
     const { note, date, tags } = arr[i];
     const keys = Object.keys(tags);
-    const activeKeys = keys.filter((el) => {
-      return tags[el] == true;
-    });
-    list.insertAdjacentHTML("beforeend", getHtml(note, date, i, activeKeys));
+    const activeKeys = keys.filter((el) => tags[el] == true);
+    const showTags = activeKeys.length > 0 ? activeKeys : "No tags";
+    list.insertAdjacentHTML("beforeend", getHtml(note, date, i, showTags));
   }
 }
 
