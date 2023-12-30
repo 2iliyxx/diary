@@ -5,3 +5,4 @@
 5. Notes delete
 6. Categories and filtration by them
 7. Don't show label image if there is no tags
+8. Tags edit

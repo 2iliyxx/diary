@@ -5,9 +5,11 @@ const filterBtn = document.querySelector("#filterByDate");
 const searchInput = document.querySelector("#searchInput");
 const searchBtn = document.querySelector("#searchButton");
 const tagsGroup = document.querySelector(".tags");
+const filterByTags = document.querySelector(".filter");
 let notes = [];
 let visibleNotes = notes;
 let mode = 1;
+let definingTags = [];
 
 createButton.addEventListener("click", () => {
   if (input.value !== "") {
@@ -158,4 +160,29 @@ input.addEventListener("keyup", function (event) {
     alert("Note can not be blank");
     input.value = "";
   }
+});
+
+filterByTags.addEventListener("input", function (event) {
+  const checkBox = event.target.closest(".form-check-input");
+  if (checkBox.checked) {
+    if (!definingTags.includes(checkBox.value)) {
+      definingTags.push(checkBox.value);
+    } else {
+      return;
+    }
+  } else {
+    const index = definingTags.indexOf(checkBox.value);
+    definingTags.splice(index, 1);
+  }
+  const filteredNotes = notes.filter((note) => {
+    for (let defTag of definingTags) {
+      if (!note.tags[defTag.toLowerCase()]) {
+        return false;
+      }
+    }
+    return true;
+  });
+  visibleNotes = filteredNotes;
+  render(filteredNotes);
+  console.log(filteredNotes);
 });

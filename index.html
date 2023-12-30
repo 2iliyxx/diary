@@ -74,9 +74,58 @@
           Search
         </button>
       </div>
-      <button type="button" class="btn btn-secondary" id="filterByDate">
-        Filter by Date
-      </button>
+      <div class="filter">
+        <button type="button" class="btn btn-secondary" id="filterByDate">
+          Filter by Date
+        </button>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="inlineCheckbox1"
+            value="Personal"
+          />
+          <label class="form-check-label" for="inlineCheckbox1">Personal</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="inlineCheckbox2"
+            value="Work"
+          />
+          <label class="form-check-label" for="inlineCheckbox2">Work</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="inlineCheckbox3"
+            value="Studying"
+          />
+          <label class="form-check-label" for="inlineCheckbox3">Studying</label>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="inlineCheckbox4"
+              value="Traveling"
+            />
+            <label class="form-check-label" for="inlineCheckbox4"
+              >Traveling</label
+            >
+          </div>
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="inlineCheckbox5"
+              value="Fun"
+            />
+            <label class="form-check-label" for="inlineCheckbox5">Fun</label>
+          </div>
+        </div>
+      </div>
       <ul class="list-group list-group-flush" id="diary"></ul>
     </div>
     <script src="script.js"></script>
