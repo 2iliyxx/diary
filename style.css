@@ -73,3 +73,11 @@ body {
   font-size: 0.9em;
   opacity: 50%;
 }
+
+#noteDate,
+#noteTime {
+  color: white;
+  margin-left: 10px;
+  border: none;
+  background-color: #0d6efd;
+}

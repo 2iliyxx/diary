@@ -6,10 +6,18 @@ const searchInput = document.querySelector("#searchInput");
 const searchBtn = document.querySelector("#searchButton");
 const tagsGroup = document.querySelector(".tags");
 const filterByTags = document.querySelector(".filter");
+const noteDate = document.querySelector("#noteDate");
+const noteTime = document.querySelector("#noteTime");
 let notes = [];
 let visibleNotes = notes;
 let mode = 1;
 let definingTags = [];
+
+function dataCorrect(date) {
+  const dateToCorrect = date.split(" ")[0].split("-");
+  dateToCorrect.reverse();
+  return dateToCorrect.join(".");
+}
 
 createButton.addEventListener("click", () => {
   if (input.value !== "") {
@@ -19,8 +27,18 @@ createButton.addEventListener("click", () => {
     var travelingTag = tagsGroup.querySelector("#btn-check-4");
     var funTag = tagsGroup.querySelector("#btn-check-5");
     const date = new Date();
-    const localDate =
-      date.toLocaleDateString() + " " + date.toLocaleTimeString();
+    if (noteDate.value == "" && noteTime.value == "") {
+      var localDate =
+        date.toLocaleDateString() + " " + date.toLocaleTimeString();
+    } else if (noteDate.value == "" && noteTime.value !== "") {
+      var localDate = date.toLocaleDateString() + " " + noteTime.value + ":00";
+    } else if (noteDate.value !== "" && noteTime.value == "") {
+      correctDate = dataCorrect(noteDate.value);
+      var localDate = correctDate + " " + date.toLocaleTimeString();
+    } else if (noteDate.value !== "" && noteTime.value !== "") {
+      var localDate =
+        dataCorrect(noteDate.value) + " " + noteTime.value + ":00";
+    }
     noteObject = {
       note: input.value,
       date: localDate,
