@@ -84,21 +84,19 @@ function stringToDate(stringDate) {
   return dateObject;
 }
 
+function sortByDate(x, y) {
+  const dateA = stringToDate(x.date);
+  const dateB = stringToDate(y.date);
+  return mode == -1 ? dateA - dateB : dateB - dateA;
+}
+
 // Sort
 filterBtn.addEventListener("click", () => {
   let sortedNotes = [];
   if (visibleNotes.length < notes.length) {
-    sortedNotes = visibleNotes.sort((a, b) => {
-      const dateA = stringToDate(a.date);
-      const dateB = stringToDate(b.date);
-      return mode == -1 ? dateA - dateB : dateB - dateA;
-    });
+    sortedNotes = visibleNotes.sort(sortByDate);
   } else {
-    sortedNotes = notes.sort((a, b) => {
-      const dateA = stringToDate(a.date);
-      const dateB = stringToDate(b.date);
-      return mode == -1 ? dateA - dateB : dateB - dateA;
-    });
+    sortedNotes = notes.sort(sortByDate);
   }
   mode *= -1;
   render(sortedNotes);
